@@ -50,14 +50,15 @@ pipeline {
                 sh 'echo hello'
             }
         }
-        stage('SCA') {
+        stage('Security Source Code Analysis') {
             steps {
-                sh 'echo hello'
+                sh 'echo SCA'
             }
-        }
-        stage('SAST') {
             steps {
-                sh 'echo hello'
+                sh 'echo SAST'
+            }
+            steps {
+                echo 'evaluating output'
             }
         }
         stage('Functional Testing') {
