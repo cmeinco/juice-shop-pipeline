@@ -38,6 +38,12 @@ pipeline {
                 echo 'hello npm'
                 sh 'npm --version'
             }
+            post { 
+                success { 
+                    echo 'I will always say Hello again!'
+                    archiveArtifacts artifacts: 'dist/*.zip', fingerprint: true, allowEmptyArchive: false
+                }
+            }
         }
         stage('Build') {
             steps {
@@ -81,7 +87,6 @@ pipeline {
     post { 
         always { 
             echo 'I will always say Hello again!'
-            archiveArtifacts artifacts: 'dist/*.zip', fingerprint: true, allowEmptyArchive: false
         }
         success {
           echo "Yay, we passed."
