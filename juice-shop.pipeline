@@ -1,9 +1,12 @@
+#!groovy
 pipeline {
 
     /* code: https://github.com/bkimminich/juice-shop */
 
     agent any
-    
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))
+    }
     // triggers { pollSCM('@daily') }
     
     /*
@@ -25,6 +28,7 @@ pipeline {
             steps {
                 echo 'Building at ${WORKSPACE}'
                 checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/cmeinco/juice-shop-pipeline']]]
+                 
                 checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/bkimminich/juice-shop']]]
                 script {
                     def browsers = ['chrome', 'firefox']
@@ -47,6 +51,13 @@ pipeline {
     post { 
         always { 
             echo 'I will always say Hello again!'
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true, allowEmptyArchive: true
+        }
+        success {
+          echo "Yay, we passed."
+        }
+        failure {
+          echo "Boo, we failed."
         }
     }
 }
