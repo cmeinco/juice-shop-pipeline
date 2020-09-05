@@ -75,7 +75,7 @@ pipeline {
                 sh 'echo hello'
             }
         }
-        stage('Security DAST') {
+        stage('Prod Roll') {
             steps {
                 sh 'echo hello'
             }
