@@ -24,6 +24,7 @@ pipeline {
         stage('Prep') {
             steps {
                 echo 'Building at ${WORKSPACE}'
+                git changelog: false, poll: false, url: 'https://github.com/cmeinco/juice-shop-pipeline'
                 git changelog: false, poll: false, url: 'https://github.com/bkimminich/juice-shop'
                 script {
                     def browsers = ['chrome', 'firefox']
