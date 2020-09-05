@@ -1,4 +1,3 @@
-#!groovy
 pipeline {
 
     /* code: https://github.com/bkimminich/juice-shop */
