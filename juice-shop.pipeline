@@ -24,8 +24,8 @@ pipeline {
         stage('Prep') {
             steps {
                 echo 'Building at ${WORKSPACE}'
-                git changelog: false, poll: false, url: 'https://github.com/cmeinco/juice-shop-pipeline'
-                git changelog: false, poll: false, url: 'https://github.com/bkimminich/juice-shop'
+                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/cmeinco/juice-shop-pipeline']]]
+                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/bkimminich/juice-shop']]]
                 script {
                     def browsers = ['chrome', 'firefox']
                     for (int i = 0; i < browsers.size(); ++i) {
