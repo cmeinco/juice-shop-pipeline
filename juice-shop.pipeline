@@ -51,18 +51,6 @@ pipeline {
                 sh 'echo hello'
             }
         }
-        stage('UNIT') {
-            steps {
-                sh 'echo hello'
-            }
-        }
-        stage('Lint') {
-            steps {
-                sh 'echo hello'
-            }
-        }
-
-
         stage('SCA') {
             steps {
                 sh 'echo hello'
@@ -105,7 +93,7 @@ pipeline {
         }
         failure {
           echo "Boo, we failed."
-            
         }
     }
+   
 }
