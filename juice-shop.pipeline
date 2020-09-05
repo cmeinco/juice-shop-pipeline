@@ -1,9 +1,10 @@
-/* code: https://github.com/bkimminich/juice-shop */
 pipeline {
+
+    /* code: https://github.com/bkimminich/juice-shop */
 
     agent any
     
-    triggers { pollSCM('@daily') }
+    // triggers { pollSCM('@daily') }
     
     /*
     parameters {
