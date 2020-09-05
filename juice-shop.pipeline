@@ -39,15 +39,12 @@ pipeline {
                 sh 'npm --version'
             }
         }
-        stage('Example Test') {
-            steps {
-                echo 'Hello, JDK'
-                sh 'java -version'
-            }
-        }
         stage('Build') {
             steps {
-                sh 'echo hello'
+                sh 'npm install'
+                sh 'npm test'
+                sh 'npm run package:ci'
+
             }
         }
         stage('Security Source Code Analysis') {
