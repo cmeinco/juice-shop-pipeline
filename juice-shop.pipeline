@@ -46,18 +46,66 @@ pipeline {
                 sh 'java -version'
             }
         }
+        stage('Build') {
+            steps {
+                sh 'echo hello'
+            }
+        }
+        stage('UNIT') {
+            steps {
+                sh 'echo hello'
+            }
+        }
+        stage('Lint') {
+            steps {
+                sh 'echo hello'
+            }
+        }
+
+
+        stage('SCA') {
+            steps {
+                sh 'echo hello'
+            }
+        }
+        stage('SAST') {
+            steps {
+                sh 'echo hello'
+            }
+        }
+        stage('Functional Testing') {
+            steps {
+                sh 'echo hello'
+            }
+        }
+        stage('Security DAST') {
+            steps {
+                sh 'echo hello'
+            }
+        }
+        stage('Stage for Prod Release') {
+            steps {
+                sh 'echo hello'
+            }
+        }
+        stage('Security DAST') {
+            steps {
+                sh 'echo hello'
+            }
+        }
     }
         
     post { 
         always { 
             echo 'I will always say Hello again!'
-            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true, allowEmptyArchive: true
+            archiveArtifacts artifacts: 'dist/*.zip', fingerprint: true, allowEmptyArchive: false
         }
         success {
           echo "Yay, we passed."
         }
         failure {
           echo "Boo, we failed."
+            
         }
     }
 }
