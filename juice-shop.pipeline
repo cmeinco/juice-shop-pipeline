@@ -53,11 +53,9 @@ pipeline {
         stage('Security Source Code Analysis') {
             steps {
                 sh 'echo SCA'
-            }
-            steps {
+
                 sh 'echo SAST'
-            }
-            steps {
+
                 echo 'evaluating output'
             }
         }
