@@ -80,9 +80,9 @@ pipeline {
         }
         stage('Deploy to Dev'){
             environment {
-                APPSERVER=192.168.1.211
-                DEPLOY_LOCATION='/opt/juice-shop-test'
-                DEPLOY_SERVICENAME=juiceshop-test.service
+                APPSERVER="192.168.1.211"
+                DEPLOY_LOCATION="/opt/juice-shop-test"
+                DEPLOY_SERVICENAME="juiceshop-test.service"
             }
             steps {
                 sh '''
@@ -118,8 +118,8 @@ pipeline {
         
         stage('Promote Release Candidate'){
             environment {
-                APPSERVER=192.168.1.211
-                DEPLOY_LOCATION='/opt/juice-shop'
+                APPSERVER="192.168.1.211"
+                DEPLOY_LOCATION="/opt/juice-shop"
             }
             steps {
                 sh '''
