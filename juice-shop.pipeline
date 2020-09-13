@@ -37,6 +37,7 @@ pipeline {
                 }
                 echo 'hello npm'
                 sh 'npm --version'
+                sh 'node -v'
             }
             post { 
                 success { 
