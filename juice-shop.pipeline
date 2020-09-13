@@ -42,7 +42,7 @@ pipeline {
             post { 
                 success { 
                     echo 'I will always say Hello again!'
-                    archiveArtifacts artifacts: 'dist/*.zip', fingerprint: true, allowEmptyArchive: false
+                    archiveArtifacts artifacts: 'package-lock.json,dist/*.zip', fingerprint: true, allowEmptyArchive: false
                 }
             }
         }
