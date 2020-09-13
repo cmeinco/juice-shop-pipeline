@@ -55,11 +55,24 @@ pipeline {
         }
         stage('Security Source Code Analysis') {
             steps {
+            
                 sh 'echo SCA'
+                // uses npm audit to detect and npm-audit-resolve to manage findings
+                // verify check audit is installed, if not, need to install it. (is the the right place?)
+                check-audit
+                
 
                 sh 'echo SAST'
+                echo =========== SAST ================
+                echo ${WORKSPACE}
+                
+                // where does this get a debug build from?
+                // semgrep?
+                
 
                 echo 'evaluating output'
+                // prob should be done at every step; maybe here sign the artifacts / package up for our s00p3rspecial security org?
+                
             }
         }
         stage('Functional Testing') {
@@ -67,9 +80,12 @@ pipeline {
                 sh 'echo hello'
             }
         }
-        stage('Security DAST') {
+        stage('Security DAST/Runtime Testing') {
             steps {
                 sh 'echo hello'
+                echo DAST
+                echo IAST
+                echo PenTest? What you mean automated pen test?
             }
         }
         stage('Stage for Prod Release') {
