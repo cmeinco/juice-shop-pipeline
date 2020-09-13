@@ -25,7 +25,7 @@ pipeline {
     stages {
         stage('Prep') {
             steps {
-                echo 'Building at ${WORKSPACE}'
+                echo "Building at ${WORKSPACE}"
                 checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/cmeinco/juice-shop-pipeline']]]
                  
                 checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/bkimminich/juice-shop']]]
