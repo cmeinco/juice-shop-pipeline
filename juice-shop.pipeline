@@ -50,6 +50,11 @@ pipeline {
                 sh 'npm install'
                 sh 'npm run package:ci'
             }
+            post { 
+                success { 
+                    archiveArtifacts artifacts: 'dist/*.zip', fingerprint: true, allowEmptyArchive: false
+                }
+            }
         }
         stage('Security Source Code Analysis') {
             steps {
