@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo "Building at ${WORKSPACE}"
                 checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/cmeinco/juice-shop-pipeline']]]
-                 
+                
                 checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/bkimminich/juice-shop']]]
                 script {
                     def browsers = ['chrome', 'firefox']
@@ -70,6 +70,7 @@ pipeline {
                 pwd
                 ls -ltra
                 '''
+                sh 'cp ../juice-shop@script/audit-resolve.json .'
                 sh 'check-audit'
                 
 
