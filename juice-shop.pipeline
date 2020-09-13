@@ -55,6 +55,7 @@ pipeline {
             }
             post { 
                 success { 
+                    sh 'npm install --package-lock'
                     archiveArtifacts artifacts: 'dist/*.zip', fingerprint: true, allowEmptyArchive: false
                 }
             }
