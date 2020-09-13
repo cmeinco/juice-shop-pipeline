@@ -48,7 +48,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
-                sh 'npm test'
+                // need to run unit tests, not full test package every build, look into this
+                // sh 'npm test' 
                 sh 'npm run package:ci'
             }
             post { 
@@ -63,6 +64,10 @@ pipeline {
                 sh 'echo SCA'
                 // uses npm audit to detect and npm-audit-resolve to manage findings
                 // verify check audit is installed, if not, need to install it. (is the the right place?)
+                sh '''
+                pwd
+                ls -ltra
+                '''
                 sh 'check-audit'
                 
 
