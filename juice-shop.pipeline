@@ -48,9 +48,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
-                sh 'npm test'
                 sh 'npm run package:ci'
-
             }
         }
         stage('Security Source Code Analysis') {
@@ -75,9 +73,33 @@ pipeline {
                 
             }
         }
+        stage('Deploy to Dev'){
+            environment {
+                APPSERVER=192.168.1.211
+                DEPLOY_LOCATION='/opt/juice-shop-test'
+                DEPLOY_SERVICENAME=juiceshop-test.service
+            }
+            steps {
+                sh '''
+                    cd dist
+                    scp ./*.zip appuser@${APPSERVER}:${DEPLOY_LOCATION}/
+                    cat *.md5
+                    echo .
+                    ssh appuser@${APPSERVER} 'md5sum ${DEPLOY_LOCATION}/*.zip'
+                '''
+                // todo: appuser should have access to restart services, check sudoers
+                sh '''
+                    ssh appuser@${APPSERVER} "md5sum ${DEPLOY_LOCATION}/*.zip"
+                    ssh appuser@${APPSERVER} "sudo systemctl stop ${DEPLOY_SERVICENAME}"
+                    ssh appuser@${APPSERVER} "cd ${DEPLOY_LOCATION}/;rm -rf juice-shop-app;unzip *.zip;rm *.zip;mv -fv juice-shop_* juice-shop-app"
+                    ssh appuser@${APPSERVER} "sudo systemctl start ${DEPLOY_SERVICENAME}"
+                '''
+
+            }
+        }
         stage('Functional Testing') {
             steps {
-                sh 'echo hello'
+                sh 'npm test'
             }
         }
         stage('Security DAST/Runtime Testing') {
@@ -85,14 +107,27 @@ pipeline {
                 sh 'echo hello'
                 echo DAST
                 echo IAST
-                echo PenTest? What you mean automated pen test?
+                echo PenTest? What you mean automated pen test? u going crazy?
             }
         }
-        stage('Stage for Prod Release') {
+        
+        stage('Promote Release Candidate'){
+            environment {
+                APPSERVER=192.168.1.211
+                DEPLOY_LOCATION='/opt/juice-shop'
+            }
             steps {
-                sh 'echo hello'
+                sh '''
+                    cd dist
+                    scp ./*.zip appuser@${APPSERVER}:${DEPLOY_LOCATION}/
+                    cat *.md5
+                    echo .
+                    ssh appuser@${APPSERVER} 'md5sum ${DEPLOY_LOCATION}/*.zip'
+                '''
+                // u compare the outputs, should match...
             }
         }
+        // maybe wait here for something?  change window?  // low volume  // blue green?
         stage('Prod Roll') {
             steps {
                 sh 'echo hello'
