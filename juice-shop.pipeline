@@ -62,7 +62,7 @@ pipeline {
                 sh 'echo SCA'
                 // uses npm audit to detect and npm-audit-resolve to manage findings
                 // verify check audit is installed, if not, need to install it. (is the the right place?)
-                check-audit
+                sh 'check-audit'
                 
 
                 sh 'echo SAST'
