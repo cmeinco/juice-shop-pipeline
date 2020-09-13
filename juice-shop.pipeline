@@ -61,8 +61,8 @@ pipeline {
                 
 
                 sh 'echo SAST'
-                echo =========== SAST ================
-                echo ${WORKSPACE}
+                echo "=========== SAST ================"
+                echo "${WORKSPACE}"
                 
                 // where does this get a debug build from?
                 // semgrep?
