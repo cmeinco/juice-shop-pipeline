@@ -56,7 +56,7 @@ pipeline {
                 }
             }
         }
-        stage('Security Source Code Analysis') {
+        stage('[Security] Source Code Testing') {
             steps {
             
                 sh 'echo SCA'
@@ -107,7 +107,7 @@ pipeline {
                 sh 'npm test'
             }
         }
-        stage('Security DAST/Runtime Testing') {
+        stage('[Security] \nRuntime <br/>Testing') {
             steps {
                 sh 'echo hello'
                 echo "DAST"
