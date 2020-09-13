@@ -110,9 +110,9 @@ pipeline {
         stage('Security DAST/Runtime Testing') {
             steps {
                 sh 'echo hello'
-                echo DAST
-                echo IAST
-                echo PenTest? What you mean automated pen test? u going crazy?
+                echo "DAST"
+                echo "IAST"
+                echo "PenTest? What you mean automated pen test? u going crazy?"
             }
         }
         
