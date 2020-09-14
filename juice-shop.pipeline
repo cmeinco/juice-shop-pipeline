@@ -99,7 +99,7 @@ pipeline {
                     scp ./*.zip appuser@${APPSERVER}:${DEPLOY_LOCATION}/
                     cat *.md5
                     echo .
-                    ssh appuser@${APPSERVER} 'md5sum ${DEPLOY_LOCATION}/*.zip'
+                    ssh appuser@${APPSERVER} "md5sum ${DEPLOY_LOCATION}/*.zip"
                 '''
                 // todo: appuser should have access to restart services, check sudoers
                 sh '''
