@@ -139,7 +139,7 @@ pipeline {
                     scp ./*.zip appuser@${APPSERVER}:${DEPLOY_LOCATION}/
                     cat *.md5
                     echo .
-                    ssh appuser@${APPSERVER} 'md5sum ${DEPLOY_LOCATION}/*.zip'
+                    ssh appuser@${APPSERVER} "md5sum ${DEPLOY_LOCATION}/*.zip"
                 '''
                 // u compare the outputs, should match...
             }
@@ -147,7 +147,7 @@ pipeline {
         // maybe wait here for something?  change window?  // low volume  // blue green?
         stage('Prod Roll') {
             steps {
-                sh 'echo hello'
+                sh 'echo prod fake'
             }
         }
     }
