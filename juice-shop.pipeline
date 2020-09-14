@@ -38,6 +38,9 @@ pipeline {
                 echo 'hello npm'
                 sh 'npm --version'
                 sh 'node -v'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh 'rm dist/*'
+                }
             }
             post { 
                 success { 
