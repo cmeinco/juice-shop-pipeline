@@ -63,7 +63,9 @@ pipeline {
                 }
             }
         }
-        stage('[Security] Source Code Testing') {
+        stage('[Security] Static Testing') {
+		parallel {
+			stage('SCA') {	
             steps {
             
                 sh 'echo SCA'
@@ -75,8 +77,10 @@ pipeline {
                 '''
                 sh 'cp ../juice-shop@script/audit-resolve.json .'
                 sh 'check-audit'
-                
-
+               }
+		}
+		stage('SAST') { 
+		 steps {
                 sh 'echo SAST'
                 echo "=========== SAST ================"
                 echo "${WORKSPACE}"
@@ -87,8 +91,9 @@ pipeline {
 
                 echo 'evaluating output'
                 // prob should be done at every step; maybe here sign the artifacts / package up for our s00p3rspecial security org?
-                
+               } 
             }
+		}
         }
         stage('Deploy to Dev'){
             environment {
