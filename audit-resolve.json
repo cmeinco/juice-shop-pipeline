@@ -1,80 +1,90 @@
 {
   "decisions": {
     "17|express-jwt>jsonwebtoken": {
-      "decision": "postpone",
-      "madeAt": 1600089227685
+      "decision": "ignore",
+      "madeAt": 1600830634040
     },
     "55|express-jwt>jsonwebtoken>moment": {
-      "decision": "postpone",
-      "madeAt": 1600089227685
+      "decision": "ignore",
+      "madeAt": 1600830634040
     },
     "88|express-jwt>jsonwebtoken>jws": {
-      "decision": "postpone",
-      "madeAt": 1600089227685
+      "decision": "ignore",
+      "madeAt": 1600830634040
     },
     "532|express-jwt>jsonwebtoken>moment": {
-      "decision": "postpone",
-      "madeAt": 1600089227685
+      "decision": "ignore",
+      "madeAt": 1600830634040
     },
     "658|express-jwt>jsonwebtoken>jws>base64url": {
-      "decision": "postpone",
-      "madeAt": 1600089227685
+      "decision": "ignore",
+      "madeAt": 1600830634040
     },
     "658|express-jwt>jsonwebtoken>jws>jwa>base64url": {
-      "decision": "postpone",
-      "madeAt": 1600089227685
+      "decision": "ignore",
+      "madeAt": 1600830634040
     },
     "17|jsonwebtoken": {
-      "decision": "postpone",
-      "madeAt": 1600089229173
+      "decision": "ignore",
+      "madeAt": 1600830699278,
+      "expiresAt": 1601435310492
     },
     "88|jsonwebtoken>jws": {
-      "decision": "postpone",
-      "madeAt": 1600089229173
+      "decision": "ignore",
+      "madeAt": 1600830699278,
+      "expiresAt": 1601435310492
     },
     "658|jsonwebtoken>jws>base64url": {
-      "decision": "postpone",
-      "madeAt": 1600089229174
+      "decision": "ignore",
+      "madeAt": 1600830699278,
+      "expiresAt": 1601435310492
     },
     "658|jsonwebtoken>jws>jwa>base64url": {
-      "decision": "postpone",
-      "madeAt": 1600089229174
+      "decision": "ignore",
+      "madeAt": 1600830699278,
+      "expiresAt": 1601435310492
     },
     "135|sanitize-html": {
-      "decision": "postpone",
-      "madeAt": 1600089230080
+      "decision": "ignore",
+      "madeAt": 1600830777305,
+      "expiresAt": 1601435310492
     },
     "154|sanitize-html": {
-      "decision": "postpone",
-      "madeAt": 1600089230080
+      "decision": "ignore",
+      "madeAt": 1600830777305,
+      "expiresAt": 1601435310492
     },
     "577|sanitize-html>lodash": {
-      "decision": "postpone",
-      "madeAt": 1600089230080
+      "decision": "ignore",
+      "madeAt": 1600830777305,
+      "expiresAt": 1601435310492
     },
     "782|sanitize-html>lodash": {
-      "decision": "postpone",
-      "madeAt": 1600089230080
+      "decision": "ignore",
+      "madeAt": 1600830777305,
+      "expiresAt": 1601435310492
     },
     "1065|sanitize-html>lodash": {
-      "decision": "postpone",
-      "madeAt": 1600089230080
+      "decision": "ignore",
+      "madeAt": 1600830777305,
+      "expiresAt": 1601435310492
     },
     "1523|sanitize-html>lodash": {
-      "decision": "postpone",
-      "madeAt": 1600089230080
+      "decision": "ignore",
+      "madeAt": 1600830777305,
+      "expiresAt": 1601435310492
     },
     "1556|node-fetch": {
-      "decision": "postpone",
-      "madeAt": 1600089230759
+      "decision": "ignore",
+      "madeAt": 1600830787797
     },
     "1556|frisby>node-fetch": {
-      "decision": "postpone",
-      "madeAt": 1600089231400
+      "decision": "ignore",
+      "madeAt": 1600830799056
     },
     "1122|marsdb": {
       "decision": "postpone",
-      "madeAt": 1600089232022
+      "madeAt": 1600830806185
     }
   },
   "rules": {},
