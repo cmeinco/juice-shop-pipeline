@@ -95,6 +95,7 @@ post {
                 // semgrep?
 		sh '''
 			python3 -m pip install --upgrade semgrep
+			export PATH=${PATH}:/var/lib/jenkins/.local/bin
 			semgrep --error --json --output semgrep-output.json --config https://semgrep.dev/p/r2c-security-audit
 		'''
                 echo 'evaluating output'
