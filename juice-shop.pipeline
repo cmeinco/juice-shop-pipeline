@@ -93,7 +93,7 @@ post {
                 
                 // where does this get a debug build from?
                 // semgrep?
-                semgrep --error --json --output semgrep-output.json --config https://semgrep.dev/p/r2c-security-audit
+                sh 'semgrep --error --json --output semgrep-output.json --config https://semgrep.dev/p/r2c-security-audit'
                 echo 'evaluating output'
                 // prob should be done at every step; maybe here sign the artifacts / package up for our s00p3rspecial security org?
                }
