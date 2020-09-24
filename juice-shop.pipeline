@@ -63,7 +63,7 @@ pipeline {
                 }
             }
         }
-        stage('[Security] Source Code Analysis') {
+        stage('[Security] Code Analysis') {
 		parallel {
 			stage('SCA') {	
             steps {
