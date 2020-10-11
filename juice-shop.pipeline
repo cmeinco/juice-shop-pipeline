@@ -96,7 +96,7 @@ post {
 		sh '''
 			python3 -m pip install --upgrade semgrep
 			export PATH=${PATH}:/var/lib/jenkins/.local/bin
-			semgrep --error --json --output semgrep-output.json --config https://semgrep.dev/p/r2c-security-audit
+			semgrep --error --exclude test --json --output semgrep-output.json --config https://semgrep.dev/p/r2c-security-audit
 		'''
                 echo 'evaluating output'
                 // prob should be done at every step; maybe here sign the artifacts / package up for our s00p3rspecial security org?
