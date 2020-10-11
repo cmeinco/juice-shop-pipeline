@@ -26,23 +26,23 @@
     },
     "17|jsonwebtoken": {
       "decision": "ignore",
-      "madeAt": 1600830699278,
-      "expiresAt": 1601435310492
+      "madeAt": 1602386140339,
+      "expiresAt": 1604978128964
     },
     "88|jsonwebtoken>jws": {
       "decision": "ignore",
-      "madeAt": 1600830699278,
-      "expiresAt": 1601435310492
+      "madeAt": 1602386140339,
+      "expiresAt": 1604978128964
     },
     "658|jsonwebtoken>jws>base64url": {
       "decision": "ignore",
-      "madeAt": 1600830699278,
-      "expiresAt": 1601435310492
+      "madeAt": 1602386140339,
+      "expiresAt": 1604978128964
     },
     "658|jsonwebtoken>jws>jwa>base64url": {
       "decision": "ignore",
-      "madeAt": 1600830699278,
-      "expiresAt": 1601435310492
+      "madeAt": 1602386140339,
+      "expiresAt": 1604978128964
     },
     "135|sanitize-html": {
       "decision": "ignore",
