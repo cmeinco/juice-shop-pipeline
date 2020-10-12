@@ -96,11 +96,12 @@ post {
 		sh '''
 			python3 -m pip install --upgrade semgrep
 			export PATH=${PATH}:/var/lib/jenkins/.local/bin
+			semgrep --version
 			# add --error to break but how to check if results have documented ignores?  
 			#  https://semgrep.dev/p/r2c-security-audit
 			# https://semgrep.dev/p/nodejsscan
 			# --config="https://semgrep.dev/c/r/contrib.nodejsscan.nosql_injection.node_nosqli_js_injection"
-			semgrep --exclude test --json --output semgrep-output.json -v --config https://semgrep.dev/p/nodejsscan
+			semgrep --exclude test --json --output semgrep-output.json --timeout 120 --config https://semgrep.dev/p/nodejsscan
 		'''
                 echo 'evaluating output'
                 // prob should be done at every step; maybe here sign the artifacts / package up for our s00p3rspecial security org?
