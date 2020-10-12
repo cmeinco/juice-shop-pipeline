@@ -112,7 +112,6 @@ post {
                 }
             }
  
-            }
 		}
 
                 stage('SAST Secutiy Audit') {
