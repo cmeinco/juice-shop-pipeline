@@ -114,6 +114,37 @@ post {
  
             }
 		}
+
+                stage('SAST Secutiy Audit') {
+                 steps {
+                sh 'echo SAST'
+                echo "=========== SAST ================"
+                echo "${WORKSPACE}"
+
+                // where does this get a debug build from?
+                // semgrep?
+                sh '''
+                        python3 -m pip install --upgrade semgrep
+                        export PATH=${PATH}:/var/lib/jenkins/.local/bin
+                        semgrep --version
+                        # add --error to break but how to check if results have documented ignores?
+                        # https://semgrep.dev/p/r2c-security-audit
+                        # https://semgrep.dev/p/nodejsscan
+                        # --config="https://semgrep.dev/c/r/contrib.nodejsscan.nosql_injection.node_nosqli_js_injection"
+                        semgrep --exclude test --json --output semgrep-r2csecaudit-output.json --timeout 120 --verbose --config https://semgrep.dev/p/r2c-security-audit
+                '''
+                echo 'evaluating output'
+                // prob should be done at every step; maybe here sign the artifacts / package up for our s00p3rspecial security org?
+               }
+post {
+                success {
+                    archiveArtifacts artifacts: 'semgrep-r2csecaudit-output.json', fingerprint: true, allowEmptyArchive: false
+                }
+            }
+
+            }
+                }
+
         }
         stage('Deploy to Dev'){
             environment {
